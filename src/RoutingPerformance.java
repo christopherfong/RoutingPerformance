@@ -10,9 +10,6 @@ import java.util.ArrayList;
  */
 public class RoutingPerformance {
 
-    private Network network;
-    private PathFinder algorithm;
-
     public static void main (String args[]) throws Exception {
 
         if (args.length < 3) {
@@ -32,7 +29,21 @@ public class RoutingPerformance {
             System.exit(1);
         }
 
-        Network n = parseTopology(topologyStream);
+        Network network = parseTopology(topologyStream);
+
+        PathFinder algorithm = null;
+        if (args[0].equals("SHP")) {
+            algorithm = new ShortestHop(network);
+        } else if (args[0].equals("SDP")) {
+            algorithm = new ShortestDelay();
+        } else if (args[0].equals("LLP")) {
+            algorithm = new LeastLoad();
+        } else {
+            System.out.println("Usage: ROUTING_SCHEME TOPOLOGY_FILE WORKLOAD_FILE");
+            System.exit(1);
+        }
+
+        Simulator simulatee = new Simulator(network, algorithm);
 
         File workloadFile = new File(args[2]);
         LineNumberReader workloadStream = null;
@@ -45,26 +56,10 @@ public class RoutingPerformance {
             System.exit(1);
         }
 
-        PathFinder p = null;
-        if (args[0].equals("SHP")) {
-            p = new ShortestHop(n);
-        } else if (args[0].equals("SDP")) {
-            p = new ShortestDelay();
-        } else if (args[0].equals("LLP")) {
-            p = new LeastLoad();
-        } else {
-            System.out.println("Usage: ROUTING_SCHEME TOPOLOGY_FILE WORKLOAD_FILE");
-            System.exit(1);
-        }
+        parseWorkload(workloadStream, simulatee);
 
-        RoutingPerformance rp = new RoutingPerformance(n, p);
-        p.find('B', 'F');
+        simulatee.run();
 
-    }
-
-    public RoutingPerformance (Network network, PathFinder algorithm) {
-        this.network = network;
-        this.algorithm = algorithm;
     }
 
     public static Network parseTopology (LineNumberReader topologyStream) throws IOException {
@@ -97,6 +92,20 @@ public class RoutingPerformance {
 
         return Network.generate(fromArray, toArray, propArray, circuitArray);
 
+    }
+
+    public static void parseWorkload (LineNumberReader workloadStream, Simulator s) throws IOException{
+        while (workloadStream.ready()) {
+            String   line = workloadStream.readLine();
+            String[] specs = line.split(" ");
+
+            Double start = Double.parseDouble(specs[0]);
+            int from = Network.translate(specs[1].charAt(0));
+            int to = Network.translate(specs[2].charAt(0));
+            Double runtime = Double.parseDouble(specs[3]);
+
+            s.addRequest(from, to, start, runtime);
+        }
     }
 
 }

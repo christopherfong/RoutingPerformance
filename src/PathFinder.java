@@ -9,6 +9,6 @@ import java.util.List;
  */
 public interface PathFinder {
 
-    public List<Integer> find(char from, char to);
+    public List<Integer> find(int from, int to);
 
 }

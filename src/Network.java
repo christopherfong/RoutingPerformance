@@ -26,8 +26,8 @@ public class Network {
 
         int numNodes = from.length;
         for (int i = 0; i < numNodes; i++) {
-            int translatedFrom = n.translate(from[i]);
-            int translatedTo = n.translate(to[i]);
+            int translatedFrom = Network.translate(from[i]);
+            int translatedTo = Network.translate(to[i]);
             try {
                 n.addLink(translatedFrom,translatedTo,propagationDelay[i],circuitCapacity[i]);
             } catch (IllegalArgumentException e) {
@@ -63,7 +63,7 @@ public class Network {
         if (isAdjacent(from, to)) {
             Edge e = links[from][to];
             int capacity = e.getCircuitCapacity();
-            int currentCircuits = e.getCurrentVirtualCircuits();
+            int currentCircuits = e.getCurrentLoad();
             if (currentCircuits < capacity) {
                 isValidRoute = true;
             }
@@ -87,7 +87,7 @@ public class Network {
 
     }
 
-    public int translate (char letter) {
+    public static int translate (char letter) {
         int translation = -1;
         if (letter >= 'A' && letter <= 'Z') {
             translation = letter - 'A';

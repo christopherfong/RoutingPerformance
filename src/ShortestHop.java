@@ -18,26 +18,26 @@ public class ShortestHop implements PathFinder{
     }
 
     @Override
-    public List<Integer> find(char from, char to) {
+    public List<Integer> find(int from, int to) {
 
-        int fromIndex = network.translate(from);
-        int toIndex = network.translate(to);
+        boolean failed = false;
 
         int[] distances = new int[Network.NODES_MAX];
         int[] previous = new int[Network.NODES_MAX];
         for (int i = 0; i < distances.length; i++) {
             distances[i] = Integer.MAX_VALUE;
-            previous[i] = -1;
+            previous[i] = -20;
         }
 
-        distances[fromIndex] = 0;
-        previous[fromIndex] = fromIndex;
+        distances[from] = 0;
+        previous[from] = from;
 
         PriorityQueue<Vertex> candidates = new PriorityQueue<Vertex>();
 
         for (int i = 0; i < Network.NODES_MAX; i++) {
-            if (i != fromIndex && network.isValidRoute(fromIndex, i)) {
+            if (i != from && network.isValidRoute(from, i)) {
                 Vertex v = new Vertex(i,1);
+                previous[i] = from;
                 candidates.add(v);
             }
         }
@@ -46,38 +46,40 @@ public class ShortestHop implements PathFinder{
 
             Vertex v = candidates.poll();
             int currentIndex = v.getIndex();
-            System.out.printf("Examining index: %c\n",(char)(currentIndex + 'A'));
+            //System.out.printf("Examining index: %c\n",(char)(currentIndex + 'A'));
             distances[currentIndex] = v.getCost();
-            if (v.getIndex() == toIndex) {
+            if (v.getIndex() == to) {
                 break;
             }
 
             for (int i = 0; i < Network.NODES_MAX; i++) {
-                if (i != currentIndex && network.isValidRoute(i, currentIndex) && distances[i] == Integer.MAX_VALUE) {
-
-                    v = null;
-                    for (Vertex iterator : candidates) {
-                        if (iterator.getIndex() == i) {
-                            v = iterator;
-                            break;
+                if (i != currentIndex && distances[i] == Integer.MAX_VALUE) {
+                    if (!network.isValidRoute(i, currentIndex)) {
+                        failed = true;
+                        break;
+                    } else {
+                        v = null;
+                        for (Vertex iterator : candidates) {
+                            if (iterator.getIndex() == i) {
+                                v = iterator;
+                                break;
+                            }
                         }
+
+                        if (v != null && (v.getCost() > distances[currentIndex] + 1)) {
+                            v.setCost(distances[currentIndex]+1);
+                            previous[i] = currentIndex;
+                        } else if (v == null) {
+                            candidates.add(new Vertex(i,distances[currentIndex] + 1));
+                            previous[i] = currentIndex;
+                        }
+
                     }
-
-                    if (v != null && (v.getCost() > distances[currentIndex] + 1)) {
-                        v.setCost(distances[currentIndex]+1);
-                    } else if (v == null) {
-                        candidates.add(new Vertex(i,distances[currentIndex] + 1));
-                    }
-
-                    previous[i] = currentIndex;
-
                 }
             }
-
-            fromIndex = currentIndex;
-
         }
 
+        /*
         System.out.print("[ShortestHop] distances: ");
         for (int i : distances) {
             if (i != Integer.MAX_VALUE) {
@@ -88,18 +90,27 @@ public class ShortestHop implements PathFinder{
         }
         System.out.println();
 
-        System.out.print("              previous : ");
+        for (int i = 0; i < 26; i++) {
+            System.out.printf("%c ", (char)(i + 'A'));
+        }
+        System.out.println();
         for (int i : previous) {
             System.out.printf("%c ",(char)(i + 'A'));
         }
         System.out.println();
+        */
 
-        ArrayList<Integer> path = new ArrayList<Integer>();
-        int index = toIndex;
-        while (index != fromIndex) {
+        ArrayList<Integer> path = null;
+        if (!failed) {
+            path = new ArrayList<Integer>();
+
+            int index = to;
+            while (index != -20 && previous[index] != index) {
+                path.add(index);
+                index = previous[index];
+            }
             path.add(index);
         }
-        path.add(fromIndex);
 
         return path;
 

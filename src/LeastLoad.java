@@ -10,7 +10,7 @@ import java.util.List;
 public class LeastLoad implements PathFinder {
 
     @Override
-    public List<Integer> find(char from, char to) {
+    public List<Integer> find(int from, int to) {
         System.out.println("[LeastLoad] unimplemented.");
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }

@@ -39,23 +39,23 @@ public class Edge {
         return this.propagationDelay;
     }
 
-    public int getCurrentVirtualCircuits () {
+    public int getCurrentLoad() {
         return this.currentVirtualCircuits;
     }
 
-    public void setCurrentVirtualCircuits (int newCount) {
+    public void setLoad(int newCount) {
         this.currentVirtualCircuits = newCount;
     }
 
-    public void addVirtualCircuits () {
+    public void raiseLoad() {
         currentVirtualCircuits++;
     }
 
-    public void removeVirtualCircuit () throws ArithmeticException {
+    public void lowerLoad() throws ArithmeticException {
         if (currentVirtualCircuits > 0) {
             currentVirtualCircuits--;
         } else {
-            throw new ArithmeticException("[Edge] removeVirtualCircuit: Link is currently empty.\n");
+            throw new ArithmeticException("[Edge] lowerLoad: Link is currently empty.\n");
         }
     }
 

@@ -10,7 +10,7 @@ import java.util.List;
 public class ShortestDelay implements PathFinder {
 
     @Override
-    public List<Integer> find(char from, char to) {
+    public List<Integer> find(int from, int to) {
         System.out.println("[ShortestDelay] unimplemented.");
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
