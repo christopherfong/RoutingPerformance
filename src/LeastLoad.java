@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,7 +10,8 @@ import java.util.ArrayList;
 public class LeastLoad implements PathFinder {
 
     @Override
-    public ArrayList<Node> find(char from, char to) {
+    public List<Integer> find(char from, char to) {
+        System.out.println("[LeastLoad] unimplemented.");
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 

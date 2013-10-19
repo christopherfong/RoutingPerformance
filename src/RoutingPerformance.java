@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class RoutingPerformance {
 
     private Network network;
+    private PathFinder algorithm;
 
     public static void main (String args[]) throws Exception {
 
@@ -20,7 +21,6 @@ public class RoutingPerformance {
         }
 
         FileReader fileReader;
-
         File topologyFile = new File(args[1]);
         LineNumberReader topologyStream = null;
         try {
@@ -33,12 +33,38 @@ public class RoutingPerformance {
         }
 
         Network n = parseTopology(topologyStream);
-        RoutingPerformance rp = new RoutingPerformance(n);
+
+        File workloadFile = new File(args[2]);
+        LineNumberReader workloadStream = null;
+        try {
+            fileReader = new FileReader(workloadFile);
+            workloadStream = new LineNumberReader(fileReader);
+        } catch (FileNotFoundException e) {
+            System.out.println ("[RoutingPerformance] Attempted to open "+workloadFile.toString());
+            System.out.println ("Exception received: " + e.getMessage());
+            System.exit(1);
+        }
+
+        PathFinder p = null;
+        if (args[0].equals("SHP")) {
+            p = new ShortestHop(n);
+        } else if (args[0].equals("SDP")) {
+            p = new ShortestDelay();
+        } else if (args[0].equals("LLP")) {
+            p = new LeastLoad();
+        } else {
+            System.out.println("Usage: ROUTING_SCHEME TOPOLOGY_FILE WORKLOAD_FILE");
+            System.exit(1);
+        }
+
+        RoutingPerformance rp = new RoutingPerformance(n, p);
+        p.find('B', 'F');
 
     }
 
-    public RoutingPerformance (Network network) {
+    public RoutingPerformance (Network network, PathFinder algorithm) {
         this.network = network;
+        this.algorithm = algorithm;
     }
 
     public static Network parseTopology (LineNumberReader topologyStream) throws IOException {

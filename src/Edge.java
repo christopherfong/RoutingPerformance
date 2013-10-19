@@ -5,9 +5,9 @@
  * @since : 19/10/13
  *        Made with Love
  */
-public class Node {
+public class Edge {
 
-    private static final int PROPAGATION_DELAY_MAX = 100;
+    private static final int PROPAGATION_DELAY_MAX = 200;
     private static final int VIRTUAL_CIRCUITS_MAX = 100;
 
     private int circuitCapacity;
@@ -15,14 +15,14 @@ public class Node {
 
     private int currentVirtualCircuits;
 
-    public Node (int propagationDelay, int circuitCapacity) throws IllegalArgumentException {
-
-        if (circuitCapacity > VIRTUAL_CIRCUITS_MAX) {
-            throw new IllegalArgumentException("[Node] circuitCapacity greater than 100");
-        }
+    public Edge(int propagationDelay, int circuitCapacity) throws IllegalArgumentException {
 
         if (propagationDelay > PROPAGATION_DELAY_MAX) {
-            throw new IllegalArgumentException("[Node] propagationDelay greater than 100");
+            throw new IllegalArgumentException("[Edge] propagationDelay greater than 200");
+        }
+
+        if (circuitCapacity > VIRTUAL_CIRCUITS_MAX) {
+            throw new IllegalArgumentException("[Edge] circuitCapacity greater than 100");
         }
 
         this.circuitCapacity = circuitCapacity;
@@ -43,6 +43,10 @@ public class Node {
         return this.currentVirtualCircuits;
     }
 
+    public void setCurrentVirtualCircuits (int newCount) {
+        this.currentVirtualCircuits = newCount;
+    }
+
     public void addVirtualCircuits () {
         currentVirtualCircuits++;
     }
@@ -51,7 +55,7 @@ public class Node {
         if (currentVirtualCircuits > 0) {
             currentVirtualCircuits--;
         } else {
-            throw new ArithmeticException("removeVirtualCircuit: Link is currently empty.\n");
+            throw new ArithmeticException("[Edge] removeVirtualCircuit: Link is currently empty.\n");
         }
     }
 

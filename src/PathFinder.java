@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,6 +9,6 @@ import java.util.ArrayList;
  */
 public interface PathFinder {
 
-    public ArrayList<Node> find(char from, char to);
+    public List<Integer> find(char from, char to);
 
 }

@@ -7,12 +7,12 @@
  */
 public class Network {
 
-    private static final int NODES_MAX = 26;
+    public static final int NODES_MAX = 26;
 
-    private Node links[][];
+    private Edge links[][];
 
     private Network () {
-        this.links = new Node[Network.NODES_MAX][Network.NODES_MAX];
+        this.links = new Edge[Network.NODES_MAX][Network.NODES_MAX];
         for (int i = 0; i < links.length; i++) {
             for (int j = 0; j < links[i].length; j++) {
                  links[i][j] = null;
@@ -43,12 +43,47 @@ public class Network {
     public void addLink (int from, int to, int propagationDelay, int circuitCapacity) throws IllegalArgumentException {
 
         if (this.links[from][to] == null) {
-            Node n = new Node(propagationDelay, circuitCapacity);
+            Edge n = new Edge(propagationDelay, circuitCapacity);
             this.links[from][to] = n;
             this.links[to][from] = n;
         } else {
             throw new IllegalArgumentException("Link "+from+"<->"+to+" already exists.");
         }
+
+    }
+
+    public boolean isAdjacent (int from, int to) {
+        return (links[from][to] != null);
+    }
+
+    public boolean isValidRoute (int from, int to) {
+
+        boolean isValidRoute = false;
+
+        if (isAdjacent(from, to)) {
+            Edge e = links[from][to];
+            int capacity = e.getCircuitCapacity();
+            int currentCircuits = e.getCurrentVirtualCircuits();
+            if (currentCircuits < capacity) {
+                isValidRoute = true;
+            }
+        }
+
+        return isValidRoute;
+
+    }
+
+    public Edge getEdge (int from, int to) throws IllegalArgumentException {
+
+        if (from < 0 || from >= Network.NODES_MAX) {
+            throw new IllegalArgumentException("[Network] from: "+from+" is illegal.");
+        }
+
+        if (to < 0 || to >= Network.NODES_MAX) {
+            throw new IllegalArgumentException("[Network] to: "+to+" is illegal.");
+        }
+
+        return links[from][to];
 
     }
 
@@ -71,6 +106,24 @@ public class Network {
             }
             System.out.println();
         }
+    }
+
+    public Network deepClone () {
+
+        Network clone = new Network();
+
+        for (int i = 0; i < Network.NODES_MAX; i++) {
+            for (int j = 0; j < Network.NODES_MAX; j++) {
+                if (links[i][j] != null) {
+                    int propagationDelay = links[i][j].getPropagationDelay();
+                    int circuitCapacity = links[i][j].getCircuitCapacity();
+                    clone.addLink(i, j, propagationDelay, circuitCapacity);
+                }
+            }
+        }
+
+        return clone;
+
     }
 
 }

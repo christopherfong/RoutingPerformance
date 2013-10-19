@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4e5d81ac-e90f-49b6-a205-30b03780cccb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/LeastLoad.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PathFinder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ShortestDelay.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ShortestHop.java" />
+    <list default="true" id="4e5d81ac-e90f-49b6-a205-30b03780cccb" name="Default" comment="Added djikstra's algorithm">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Vertex.java" />
+      <change type="MOVED" beforePath="C:\Program Files (x86)\JetBrains\Projects\RoutingPerformance\src\Node.java" afterPath="$PROJECT_DIR$/src/Edge.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LeastLoad.java" afterPath="$PROJECT_DIR$/src/LeastLoad.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Network.java" afterPath="$PROJECT_DIR$/src/Network.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PathFinder.java" afterPath="$PROJECT_DIR$/src/PathFinder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RoutingPerformance.java" afterPath="$PROJECT_DIR$/src/RoutingPerformance.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ShortestDelay.java" afterPath="$PROJECT_DIR$/src/ShortestDelay.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ShortestHop.java" afterPath="$PROJECT_DIR$/src/ShortestHop.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="RoutingPerformance.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="4e5d81ac-e90f-49b6-a205-30b03780cccb" time="1382168786763" ignored="false" />
-    <file path="/Network.java" changelist="4e5d81ac-e90f-49b6-a205-30b03780cccb" time="1382168681367" ignored="false" />
-    <file path="/Node.java" changelist="4e5d81ac-e90f-49b6-a205-30b03780cccb" time="1382168592179" ignored="false" />
-    <file path="/fragment.java" changelist="4e5d81ac-e90f-49b6-a205-30b03780cccb" time="1382167569088" ignored="false" />
-    <file path="/RoutingPerformance.java" changelist="4e5d81ac-e90f-49b6-a205-30b03780cccb" time="1382168511284" ignored="false" />
-    <file path="/PathFinder.java" changelist="4e5d81ac-e90f-49b6-a205-30b03780cccb" time="1382169632986" ignored="false" />
-    <file path="/ShortestHop.java" changelist="4e5d81ac-e90f-49b6-a205-30b03780cccb" time="1382169698233" ignored="false" />
+    <file path="/Dummy.txt" changelist="4e5d81ac-e90f-49b6-a205-30b03780cccb" time="1382188091553" ignored="false" />
+    <file path="/Network.java" changelist="4e5d81ac-e90f-49b6-a205-30b03780cccb" time="1382176235417" ignored="false" />
+    <file path="/Node.java" changelist="4e5d81ac-e90f-49b6-a205-30b03780cccb" time="1382173886592" ignored="false" />
+    <file path="/fragment.java" changelist="4e5d81ac-e90f-49b6-a205-30b03780cccb" time="1382185734094" ignored="false" />
+    <file path="/RoutingPerformance.java" changelist="4e5d81ac-e90f-49b6-a205-30b03780cccb" time="1382185669507" ignored="false" />
+    <file path="/PathFinder.java" changelist="4e5d81ac-e90f-49b6-a205-30b03780cccb" time="1382187950171" ignored="false" />
+    <file path="/ShortestHop.java" changelist="4e5d81ac-e90f-49b6-a205-30b03780cccb" time="1382188314498" ignored="false" />
     <file path="/ShortestDelay.java" changelist="4e5d81ac-e90f-49b6-a205-30b03780cccb" time="1382169729591" ignored="false" />
     <file path="/LeastLoad.java" changelist="4e5d81ac-e90f-49b6-a205-30b03780cccb" time="1382169752790" ignored="false" />
+    <file path="/Test.java" changelist="4e5d81ac-e90f-49b6-a205-30b03780cccb" time="1382174529730" ignored="false" />
+    <file path="$PROJECT_DIR$/src/Test.java" changelist="4e5d81ac-e90f-49b6-a205-30b03780cccb" time="1382174540113" ignored="false" />
+    <file path="/ShortestHopComparator.java" changelist="4e5d81ac-e90f-49b6-a205-30b03780cccb" time="1382178033149" ignored="false" />
+    <file path="/Vertex.java" changelist="4e5d81ac-e90f-49b6-a205-30b03780cccb" time="1382181478791" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,14 +90,32 @@
       <file leaf-file-name="RoutingPerformance.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RoutingPerformance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="0" selection-start="2357" selection-end="2357" vertical-scroll-proportion="0.0">
+            <state line="36" column="43" selection-start="1087" selection-end="1087" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1311#1322#0" expanded="true" />
-                <element signature="e#1373#1384#0" expanded="true" />
-                <element signature="e#1447#1456#0" expanded="true" />
-                <element signature="e#1518#1527#0" expanded="true" />
+                <element signature="e#2317#2328#0" expanded="true" />
+                <element signature="e#2379#2390#0" expanded="true" />
+                <element signature="e#2453#2462#0" expanded="true" />
+                <element signature="e#2524#2533#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShortestDelay.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ShortestDelay.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="5" selection-start="421" selection-end="421" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LeastLoad.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/LeastLoad.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="0" selection-start="414" selection-end="414" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -97,43 +123,47 @@
       <file leaf-file-name="Network.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Network.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="43" selection-start="1291" selection-end="1291" vertical-scroll-proportion="0.0">
+            <state line="86" column="0" selection-start="2492" selection-end="2492" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShortestHop.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ShortestHop.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ShortestHop.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="1" selection-start="366" selection-end="366" vertical-scroll-proportion="0.0">
+            <state line="92" column="51" selection-start="2792" selection-end="2792" vertical-scroll-proportion="0.4877651">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#902#910#0" expanded="true" />
+                <element signature="e#2883#2892#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Vertex.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Vertex.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="38" selection-start="241" selection-end="241" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LeastLoad.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/LeastLoad.java">
+      <file leaf-file-name="PathFinder.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PathFinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="366" selection-end="366" vertical-scroll-proportion="0.5269168">
+            <state line="12" column="0" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="topology.txt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/topology.txt">
+      <file leaf-file-name="Edge.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Edge.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="9" selection-start="146" selection-end="146" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Node.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Node.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="4" selection-start="912" selection-end="912" vertical-scroll-proportion="0.0">
+            <state line="26" column="0" selection-start="766" selection-end="766" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -159,19 +189,23 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/Limits.java" />
-        <option value="$PROJECT_DIR$/src/RoutingPerformance.java" />
         <option value="$PROJECT_DIR$/src/Node.java" />
+        <option value="$PROJECT_DIR$/src/Edge.java" />
+        <option value="$PROJECT_DIR$/src/Test.java" />
         <option value="$PROJECT_DIR$/src/Network.java" />
+        <option value="$PROJECT_DIR$/src/ShortestHopComparator.java" />
+        <option value="$PROJECT_DIR$/src/Vertex.java" />
+        <option value="$PROJECT_DIR$/src/RoutingPerformance.java" />
         <option value="$PROJECT_DIR$/src/PathFinder.java" />
-        <option value="$PROJECT_DIR$/src/ShortestHop.java" />
         <option value="$PROJECT_DIR$/src/ShortestDelay.java" />
         <option value="$PROJECT_DIR$/src/LeastLoad.java" />
+        <option value="$PROJECT_DIR$/src/ShortestHop.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="960" />
-    <option name="width" value="960" />
+    <option name="x" value="811" />
+    <option name="width" value="1109" />
     <option name="height" value="1160" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -242,7 +276,7 @@
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="options.lastSelected" value="editor.preferences.appearance" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.copyJavadoc" value="false" />
@@ -346,7 +380,7 @@
     <configuration default="false" name="RoutingPerformance" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="RoutingPerformance" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="a topology.txt c" />
+      <option name="PROGRAM_PARAMETERS" value="SHP topology.txt workload.txt" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
@@ -403,16 +437,21 @@
       <created>1382168787115</created>
       <updated>1382168787115</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added interface and stub files for Pathfinding algorithms">
+      <created>1382169835987</created>
+      <updated>1382169835987</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="960" y="0" width="960" height="1160" extended-state="0" />
-    <editor active="false" />
+    <frame x="811" y="0" width="1109" height="1160" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901296" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901296" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -423,11 +462,10 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2494432" sideWeight="0.670987" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22445081" sideWeight="0.670987" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901296" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
     </layout>
@@ -474,7 +512,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added sample data from spec" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added djikstra's algorithm" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -491,6 +529,8 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Added topology graph&#10;" />
     <MESSAGE value="Added sample data from spec" />
+    <MESSAGE value="Added interface and stub files for Pathfinding algorithms" />
+    <MESSAGE value="Added djikstra's algorithm" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -509,63 +549,88 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/topology.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="9" selection-start="146" selection-end="146" vertical-scroll-proportion="0.0">
+        <state line="13" column="9" selection-start="146" selection-end="146" vertical-scroll-proportion="0.38176197">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Edge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="0" selection-start="766" selection-end="766" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RoutingPerformance.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="0" selection-start="2357" selection-end="2357" vertical-scroll-proportion="0.0">
+        <state line="36" column="43" selection-start="1087" selection-end="1087" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1311#1322#0" expanded="true" />
-            <element signature="e#1373#1384#0" expanded="true" />
-            <element signature="e#1447#1456#0" expanded="true" />
-            <element signature="e#1518#1527#0" expanded="true" />
+            <element signature="e#2317#2328#0" expanded="true" />
+            <element signature="e#2379#2390#0" expanded="true" />
+            <element signature="e#2453#2462#0" expanded="true" />
+            <element signature="e#2524#2533#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Node.java">
+    <entry file="file://$PROJECT_DIR$/src/workload.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="4" selection-start="912" selection-end="912" vertical-scroll-proportion="0.0">
+        <state line="5" column="22" selection-start="133" selection-end="133" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PathFinder.java">
+    <entry file="file://$PROJECT_DIR$/src/topology.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="52" selection-start="224" selection-end="224" vertical-scroll-proportion="0.32302937">
+        <state line="22" column="9" selection-start="236" selection-end="236" vertical-scroll-proportion="0.66773164">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Vertex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="38" selection-start="241" selection-end="241" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Network.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="43" selection-start="1291" selection-end="1291" vertical-scroll-proportion="0.0">
+        <state line="86" column="0" selection-start="2492" selection-end="2492" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PathFinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ShortestDelay.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="4" selection-start="196" selection-end="196" vertical-scroll-proportion="0.30995107">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ShortestHop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="1" selection-start="366" selection-end="366" vertical-scroll-proportion="0.0">
+        <state line="15" column="5" selection-start="421" selection-end="421" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LeastLoad.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="366" selection-end="366" vertical-scroll-proportion="0.5269168">
+        <state line="16" column="0" selection-start="414" selection-end="414" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ShortestHop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="51" selection-start="2792" selection-end="2792" vertical-scroll-proportion="0.4877651">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#902#910#0" expanded="true" />
+            <element signature="e#2883#2892#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
