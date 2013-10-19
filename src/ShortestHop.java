@@ -11,6 +11,8 @@ import java.util.PriorityQueue;
  */
 public class ShortestHop implements PathFinder{
 
+    private static final int EMPTY = -20;
+
     private Network network;
 
     public ShortestHop (Network network) {
@@ -26,7 +28,7 @@ public class ShortestHop implements PathFinder{
         int[] previous = new int[Network.NODES_MAX];
         for (int i = 0; i < distances.length; i++) {
             distances[i] = Integer.MAX_VALUE;
-            previous[i] = -20;
+            previous[i] = EMPTY;
         }
 
         distances[from] = 0;
@@ -46,18 +48,15 @@ public class ShortestHop implements PathFinder{
 
             Vertex v = candidates.poll();
             int currentIndex = v.getIndex();
-            //System.out.printf("Examining index: %c\n",(char)(currentIndex + 'A'));
             distances[currentIndex] = v.getCost();
             if (v.getIndex() == to) {
                 break;
             }
 
             for (int i = 0; i < Network.NODES_MAX; i++) {
-                if (i != currentIndex && distances[i] == Integer.MAX_VALUE) {
-                    if (!network.isValidRoute(i, currentIndex)) {
-                        failed = true;
-                        break;
-                    } else {
+                if (distances[i] == Integer.MAX_VALUE) {
+
+                    if (network.isValidRoute(i, currentIndex)){
                         v = null;
                         for (Vertex iterator : candidates) {
                             if (iterator.getIndex() == i) {
@@ -74,22 +73,16 @@ public class ShortestHop implements PathFinder{
                             previous[i] = currentIndex;
                         }
 
+                    } else if (network.isAdjacent(i, currentIndex)) {
+                        failed = true;
+                        Edge e = network.getEdge(i, currentIndex);
+                        System.out.printf("  %c<->%c: %d/%d\n",i+'A',currentIndex+'A', e.getCurrentLoad(),e.getCircuitCapacity());
+                        break;
                     }
                 }
             }
         }
-
-        /*
-        System.out.print("[ShortestHop] distances: ");
-        for (int i : distances) {
-            if (i != Integer.MAX_VALUE) {
-                System.out.print(i + " ");
-            } else {
-                System.out.print("- ");
-            }
-        }
-        System.out.println();
-
+/*
         for (int i = 0; i < 26; i++) {
             System.out.printf("%c ", (char)(i + 'A'));
         }
@@ -98,14 +91,22 @@ public class ShortestHop implements PathFinder{
             System.out.printf("%c ",(char)(i + 'A'));
         }
         System.out.println();
-        */
 
+        for (int i : distances) {
+            if (i != Integer.MAX_VALUE) {
+                System.out.print(i + " ");
+            } else {
+                System.out.print("- ");
+            }
+        }
+        System.out.println();
+*/
         ArrayList<Integer> path = null;
-        if (!failed) {
+        if (!failed && previous[to] != EMPTY) {
             path = new ArrayList<Integer>();
 
             int index = to;
-            while (index != -20 && previous[index] != index) {
+            while (previous[index] != index) {
                 path.add(index);
                 index = previous[index];
             }

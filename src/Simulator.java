@@ -38,29 +38,32 @@ public class Simulator {
         while (!requests.isEmpty()) {
             Request currentRequest = requests.poll();
             currentTime = currentRequest.getStartTime();
-
+            System.out.printf("Current time: %f\n", currentTime);
             while(!running.isEmpty() && running.peek().getFinishTime() < currentTime) {
                 Request completed = running.poll();
+                System.out.printf(" Request: %c<->%c finished at %f\n", completed.getFrom()+'A',completed.getTo()+'A', completed.getFinishTime());
                 List<Integer> path = completed.getPath();
 
-                System.out.printf("Finishing %c -> %c\n", completed.getFrom()+'A',completed.getTo()+'A');
                 for (int i = 0; i < path.size()-1; i++) {
                     Edge e = this.network.getEdge(path.get(i), path.get(i+1));
                     e.lowerLoad();
+                    System.out.printf("  Lowering load of %c<->%c to: %d/%d\n", path.get(i)+'A',path.get(i+1)+'A',e.getCurrentLoad(),e.getCircuitCapacity());
                 }
             }
 
+            System.out.printf(" Request: %c<->%c starting\n", currentRequest.getFrom()+'A',currentRequest.getTo()+'A');
             List<Integer> path = algorithm.find(currentRequest.getFrom(), currentRequest.getTo());
             if (path != null) {
                 currentRequest.setPath(path);
                 for (int i = 0; i < path.size()-1; i++) {
                     Edge e = this.network.getEdge(path.get(i), path.get(i+1));
                     e.raiseLoad();
+                    System.out.printf("  Raising load of %c<->%c to: %d/%d\n", path.get(i)+'A',path.get(i+1)+'A',e.getCurrentLoad(),e.getCircuitCapacity());
                 }
                 success++;
-                System.out.printf("Starting %c -> %c\n", currentRequest.getFrom()+'A',currentRequest.getTo()+'A');
                 this.running.add(currentRequest);
             } else {
+                System.out.printf("  Failed.\n");
                 failures++;
             }
         }
