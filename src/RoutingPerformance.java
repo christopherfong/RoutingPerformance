@@ -12,7 +12,7 @@ public class RoutingPerformance {
 
     public static final boolean DEBUG = false;
 
-    public static void main (String args[]) throws Exception {
+    public static void main(String args[]) throws Exception {
 
         if (args.length < 3) {
             System.out.println("Usage: ROUTING_SCHEME TOPOLOGY_FILE WORKLOAD_FILE");
@@ -26,26 +26,28 @@ public class RoutingPerformance {
             fileReader = new FileReader(topologyFile);
             topologyStream = new LineNumberReader(fileReader);
         } catch (FileNotFoundException e) {
-            System.out.println ("[RoutingPerformance] Attempted to open "+topologyFile.toString());
-            System.out.println ("Exception received: " + e.getMessage());
+            System.out.println("[RoutingPerformance] Attempted to open " + topologyFile.toString());
+            System.out.println("Exception received: " + e.getMessage());
             System.exit(1);
         }
 
         Network network = parseTopology(topologyStream);
 
-        PathFinder algorithm = null;
+        Algorithm algorithm = null;
         if (args[0].equals("SHP")) {
-            algorithm = new ShortestHop(network);
+            algorithm = Algorithm.SHORTEST_HOP;
         } else if (args[0].equals("SDP")) {
-            algorithm = new ShortestDelay();
+            algorithm = Algorithm.SHORTEST_DELAY;
         } else if (args[0].equals("LLP")) {
-            algorithm = new LeastLoad();
+            algorithm = Algorithm.LEAST_LOAD;
         } else {
             System.out.println("Usage: ROUTING_SCHEME TOPOLOGY_FILE WORKLOAD_FILE");
             System.exit(1);
         }
 
-        Simulator simulatee = new Simulator(network, algorithm);
+        PathFinder djikstra = new Djikstra(network, algorithm);
+
+        Simulator simulatee = new Simulator(network, djikstra);
 
         File workloadFile = new File(args[2]);
         LineNumberReader workloadStream = null;
@@ -53,8 +55,8 @@ public class RoutingPerformance {
             fileReader = new FileReader(workloadFile);
             workloadStream = new LineNumberReader(fileReader);
         } catch (FileNotFoundException e) {
-            System.out.println ("[RoutingPerformance] Attempted to open "+workloadFile.toString());
-            System.out.println ("Exception received: " + e.getMessage());
+            System.out.println("[RoutingPerformance] Attempted to open " + workloadFile.toString());
+            System.out.println("Exception received: " + e.getMessage());
             System.exit(1);
         }
 
@@ -65,7 +67,7 @@ public class RoutingPerformance {
 
     }
 
-    public static Network parseTopology (LineNumberReader topologyStream) throws IOException {
+    public static Network parseTopology(LineNumberReader topologyStream) throws IOException {
 
         ArrayList<Character> from = new ArrayList<Character>();
         ArrayList<Character> to = new ArrayList<Character>();
@@ -73,7 +75,7 @@ public class RoutingPerformance {
         ArrayList<Integer> circuitCapacity = new ArrayList<Integer>();
 
         while (topologyStream.ready()) {
-            String   line  = topologyStream.readLine();
+            String line = topologyStream.readLine();
             String[] specs = line.split(" ");
 
             from.add(specs[0].charAt(0));
@@ -83,12 +85,12 @@ public class RoutingPerformance {
         }
 
         char[] fromArray = new char[from.size()];
-        char[] toArray   = new char[to.size()];
-        int[] propArray  = new int [propagationDelay.size()];
-        int[] circuitArray = new int [circuitCapacity.size()];
+        char[] toArray = new char[to.size()];
+        int[] propArray = new int[propagationDelay.size()];
+        int[] circuitArray = new int[circuitCapacity.size()];
         for (int i = 0; i < from.size(); i++) {
             fromArray[i] = from.get(i);
-            toArray[i]   = to.get(i);
+            toArray[i] = to.get(i);
             propArray[i] = propagationDelay.get(i);
             circuitArray[i] = circuitCapacity.get(i);
         }
@@ -97,9 +99,9 @@ public class RoutingPerformance {
 
     }
 
-    public static void parseWorkload (LineNumberReader workloadStream, Simulator s) throws IOException{
+    public static void parseWorkload(LineNumberReader workloadStream, Simulator s) throws IOException {
         while (workloadStream.ready()) {
-            String   line = workloadStream.readLine();
+            String line = workloadStream.readLine();
             String[] specs = line.split(" ");
 
             Double start = Double.parseDouble(specs[0]);

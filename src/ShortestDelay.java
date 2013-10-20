@@ -1,5 +1,3 @@
-import java.util.List;
-
 /**
  * Created with IntelliJ IDEA.
  *
@@ -7,12 +5,46 @@ import java.util.List;
  * @since : 19/10/13
  *        Made with Love
  */
-public class ShortestDelay implements PathFinder {
+public class ShortestDelay implements Cost {
 
-    @Override
-    public List<Integer> find(int from, int to) {
-        System.out.println("[ShortestDelay] unimplemented.");
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    private double accumulatedDelay;
+
+    public ShortestDelay() {
+        this.accumulatedDelay = Double.MAX_VALUE;
     }
 
+    public ShortestDelay(Edge e) {
+        this.accumulatedDelay = e.getPropagationDelay();
+    }
+
+    public double getAccumulatedDelay() {
+        return accumulatedDelay;
+    }
+
+    @Override
+    public Cost clone() {
+        ShortestDelay clone = new ShortestDelay();
+        clone.accumulatedDelay = this.getAccumulatedDelay();
+        return clone;
+    }
+
+    @Override
+    public double getCost() {
+        return this.accumulatedDelay;
+    }
+
+    @Override
+    public void setStart() {
+        this.accumulatedDelay = 0;
+    }
+
+    @Override
+    public void updateCost(Edge e) {
+        this.accumulatedDelay += e.getPropagationDelay();
+    }
+
+    @Override
+    public double calculateNewCost(Edge e) {
+        return (this.accumulatedDelay + e.getPropagationDelay());
+    }
 }

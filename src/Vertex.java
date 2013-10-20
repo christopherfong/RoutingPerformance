@@ -8,9 +8,9 @@
 public class Vertex implements Comparable {
 
     private int index;
-    private int cost;
+    private Cost cost;
 
-    public Vertex (int index, int cost) {
+    public Vertex(int index, Cost cost) {
         this.index = index;
         this.cost = cost;
     }
@@ -23,18 +23,25 @@ public class Vertex implements Comparable {
         this.index = index;
     }
 
-    public int getCost() {
+    public Cost getCost() {
         return cost;
     }
 
-    public void setCost(int cost) {
-        this.cost = cost;
+    public void updateCost(Cost c, Edge e) {
+        this.cost = c.clone();
+        this.cost.updateCost(e);
     }
 
     @Override
     public int compareTo(Object o) throws NullPointerException {
-        Vertex toCompare = (Vertex)o;
-        return (this.getCost() - toCompare.getCost());
+        Vertex toCompare = (Vertex) o;
+        int comparison = 0;
+        if (this.getCost().getCost() < toCompare.getCost().getCost()) {
+            comparison = -1;
+        } else if (this.getCost().getCost() > toCompare.getCost().getCost()) {
+            comparison = 1;
+        }
+        return comparison;
     }
 
 }

@@ -15,7 +15,7 @@ public class Request implements Comparable {
     private double runtime;
     private List<Integer> path;
 
-    public Request (int from, int to, double start, double runtime) {
+    public Request(int from, int to, double start, double runtime) {
         this.from = from;
         this.to = to;
         this.start = start;
@@ -35,17 +35,17 @@ public class Request implements Comparable {
         return (this.getStartTime() + this.getRunTime());
     }
 
-    public void setPath (List<Integer> path) {
+    public void setPath(List<Integer> path) {
         this.path = path;
     }
 
-    public List<Integer> getPath () {
+    public List<Integer> getPath() {
         return this.path;
     }
 
     @Override
     public int compareTo(Object o) {
-        Request other = (Request)o;
+        Request other = (Request) o;
         int comparison = 0;
 
         if (this.getFinishTime() < other.getFinishTime()) {

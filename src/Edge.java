@@ -35,7 +35,7 @@ public class Edge {
         return this.circuitCapacity;
     }
 
-    public int getPropagationDelay () {
+    public int getPropagationDelay() {
         return this.propagationDelay;
     }
 
