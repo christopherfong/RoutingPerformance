@@ -22,10 +22,11 @@ public class ShortestHop implements PathFinder{
     @Override
     public List<Integer> find(int from, int to) {
 
-        boolean failed = false;
+        boolean success = false;
 
         int[] distances = new int[Network.NODES_MAX];
         int[] previous = new int[Network.NODES_MAX];
+
         for (int i = 0; i < distances.length; i++) {
             distances[i] = Integer.MAX_VALUE;
             previous[i] = EMPTY;
@@ -37,8 +38,9 @@ public class ShortestHop implements PathFinder{
         PriorityQueue<Vertex> candidates = new PriorityQueue<Vertex>();
 
         for (int i = 0; i < Network.NODES_MAX; i++) {
-            if (i != from && network.isValidRoute(from, i)) {
-                Vertex v = new Vertex(i,1);
+            Vertex v;
+            if (i != from && network.isAdjacent(from, i)) {
+                 v = new Vertex(i, 1);
                 previous[i] = from;
                 candidates.add(v);
             }
@@ -50,59 +52,32 @@ public class ShortestHop implements PathFinder{
             int currentIndex = v.getIndex();
             distances[currentIndex] = v.getCost();
             if (v.getIndex() == to) {
+                success = true;
                 break;
             }
 
             for (int i = 0; i < Network.NODES_MAX; i++) {
-                if (distances[i] == Integer.MAX_VALUE) {
-
-                    if (network.isValidRoute(i, currentIndex)){
-                        v = null;
-                        for (Vertex iterator : candidates) {
-                            if (iterator.getIndex() == i) {
-                                v = iterator;
-                                break;
-                            }
-                        }
-
-                        if (v != null && (v.getCost() > distances[currentIndex] + 1)) {
-                            v.setCost(distances[currentIndex]+1);
-                            previous[i] = currentIndex;
-                        } else if (v == null) {
-                            candidates.add(new Vertex(i,distances[currentIndex] + 1));
-                            previous[i] = currentIndex;
-                        }
-
-                    } else if (network.isAdjacent(i, currentIndex)) {
-                        failed = true;
-                        Edge e = network.getEdge(i, currentIndex);
-                        System.out.printf("  %c<->%c: %d/%d\n",i+'A',currentIndex+'A', e.getCurrentLoad(),e.getCircuitCapacity());
-                        break;
+                if (distances[i] == Integer.MAX_VALUE && network.isAdjacent(i, currentIndex)){
+                    v = findVertex(candidates, i);
+                    if (v != null && v.getCost() > distances[currentIndex] + 1) {
+                        v.setCost(distances[currentIndex]+1);
+                        previous[i] = currentIndex;
+                    } else if (v == null) {
+                        candidates.add(new Vertex(i,distances[currentIndex] + 1));
+                        previous[i] = currentIndex;
                     }
                 }
             }
-        }
-/*
-        for (int i = 0; i < 26; i++) {
-            System.out.printf("%c ", (char)(i + 'A'));
-        }
-        System.out.println();
-        for (int i : previous) {
-            System.out.printf("%c ",(char)(i + 'A'));
-        }
-        System.out.println();
 
-        for (int i : distances) {
-            if (i != Integer.MAX_VALUE) {
-                System.out.print(i + " ");
-            } else {
-                System.out.print("- ");
-            }
         }
-        System.out.println();
-*/
+
+        if (RoutingPerformance.DEBUG) {
+            printArray(distances, false);
+            printArray(previous, true);
+        }
+
         ArrayList<Integer> path = null;
-        if (!failed && previous[to] != EMPTY) {
+        if (success) {
             path = new ArrayList<Integer>();
 
             int index = to;
@@ -117,4 +92,40 @@ public class ShortestHop implements PathFinder{
 
     }
 
+    private Vertex findVertex (PriorityQueue<Vertex> candidates, int index) {
+        Vertex v = null;
+        for (Vertex iterator : candidates) {
+            if (iterator.getIndex() == index) {
+                v = iterator;
+                break;
+            }
+        }
+        return v;
+    }
+
+    private void printArray (int []array, boolean characters) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.printf("%c ", (char)(i+'A'));
+        }
+        System.out.println();
+
+        for (int i : array) {
+            if (characters) {
+                System.out.printf("%c ", (char)(i+'A'));
+            } else if (array[i] == Integer.MAX_VALUE) {
+                System.out.printf("- ");
+            } else {
+                System.out.printf("%d ", i);
+            }
+        }
+        System.out.println();
+    }
+
+    /*
+    private void printLoad (int from, int to) {
+        Edge e = network.getEdge(from, to);
+        System.out.printf("%c<->%c: %d/%d\n",(char)(from+'A'),(char)(to+'A'),
+                                                 e.getCurrentLoad(),e.getCircuitCapacity());
+    }
+    */
 }

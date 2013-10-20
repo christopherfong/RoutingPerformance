@@ -1,3 +1,5 @@
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -56,16 +58,15 @@ public class Network {
         return (links[from][to] != null);
     }
 
-    public boolean isValidRoute (int from, int to) {
+    public boolean isValidPath (List<Integer> path) {
 
-        boolean isValidRoute = false;
+        boolean isValidRoute = true;
 
-        if (isAdjacent(from, to)) {
-            Edge e = links[from][to];
-            int capacity = e.getCircuitCapacity();
-            int currentCircuits = e.getCurrentLoad();
-            if (currentCircuits < capacity) {
-                isValidRoute = true;
+        for (int i = 0; i <path.size()-1; i++) {
+            Edge e = this.getEdge(path.get(i), path.get(i+1));
+            if (e == null || e.getCurrentLoad() >= e.getCircuitCapacity()) {
+                isValidRoute = false;
+                break;
             }
         }
 

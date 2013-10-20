@@ -10,6 +10,8 @@ import java.util.ArrayList;
  */
 public class RoutingPerformance {
 
+    public static final boolean DEBUG = false;
+
     public static void main (String args[]) throws Exception {
 
         if (args.length < 3) {
@@ -59,6 +61,7 @@ public class RoutingPerformance {
         parseWorkload(workloadStream, simulatee);
 
         simulatee.run();
+        simulatee.printReport();
 
     }
 
