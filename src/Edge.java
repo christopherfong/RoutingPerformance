@@ -5,7 +5,7 @@
  * @since : 19/10/13
  *        Made with Love
  */
-public class Edge implements Comparable {
+public class Edge  {
 
     private static final int PROPAGATION_DELAY_MAX = 200;
     private static final int VIRTUAL_CIRCUITS_MAX = 100;
@@ -59,20 +59,4 @@ public class Edge implements Comparable {
         }
     }
 
-    @Override
-    public int compareTo(Object o) {
-
-        Edge e = (Edge)o;
-        double thisRatio = (double)this.getCurrentLoad()/this.getCircuitCapacity();
-        double thatRatio = (double)e.getCurrentLoad()/e.getCircuitCapacity();
-
-        int comparison = 0;
-        if (thisRatio < thatRatio) {
-            comparison = -1;
-        } else if (thisRatio > thatRatio) {
-            comparison = 1;
-        }
-
-        return comparison;
-    }
 }

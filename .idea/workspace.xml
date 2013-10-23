@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4e5d81ac-e90f-49b6-a205-30b03780cccb" name="Default" comment="Refactoring - moved costs out of the algorithm">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Djikstra.java" afterPath="$PROJECT_DIR$/src/Djikstra.java" />
+    <list default="true" id="4e5d81ac-e90f-49b6-a205-30b03780cccb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Edge.java" afterPath="$PROJECT_DIR$/src/Edge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LeastLoad.java" afterPath="$PROJECT_DIR$/src/LeastLoad.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="RoutingPerformance.iws" />
@@ -122,7 +119,7 @@
       <file leaf-file-name="Edge.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Edge.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="8" selection-start="1675" selection-end="1675" vertical-scroll-proportion="0.7257218" vertical-offset="511" max-vertical-offset="1444">
+            <state line="7" column="17" selection-start="129" selection-end="129" vertical-scroll-proportion="0.17454068" vertical-offset="0" max-vertical-offset="1140">
               <folding />
             </state>
           </provider>
@@ -565,7 +562,7 @@
       <created>1382161058332</created>
       <updated>1382161058332</updated>
       <workItem from="1382522680676" duration="199000" />
-      <workItem from="1382522900610" duration="2627000" />
+      <workItem from="1382522900610" duration="2920000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1382161255355</created>
@@ -603,11 +600,15 @@
       <created>1382271953873</created>
       <updated>1382271953873</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Fixed LeastLoad to calculate based on the highest load on the path">
+      <created>1382525557982</created>
+      <updated>1382525557982</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2826000" />
+    <option name="totallyTimeSpent" value="3119000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="960" y="0" width="960" height="1160" extended-state="0" />
@@ -633,7 +634,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.7666999" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21716101" sideWeight="0.7666999" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23244782" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23244782" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -659,7 +660,8 @@
     <MESSAGE value="Fixed issue where all &quot;non-Valid edges&quot; would fail.&#10;&#10;Now only fails nonValid but Adjacent edges" />
     <MESSAGE value="Added debugging and reporting" />
     <MESSAGE value="Refactoring - moved costs out of the algorithm" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring - moved costs out of the algorithm" />
+    <MESSAGE value="Fixed LeastLoad to calculate based on the highest load on the path" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed LeastLoad to calculate based on the highest load on the path" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -777,7 +779,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Edge.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="8" selection-start="1675" selection-end="1675" vertical-scroll-proportion="0.7257218" vertical-offset="511" max-vertical-offset="1444">
+        <state line="7" column="17" selection-start="129" selection-end="129" vertical-scroll-proportion="0.17454068" vertical-offset="0" max-vertical-offset="1140">
           <folding />
         </state>
       </provider>
