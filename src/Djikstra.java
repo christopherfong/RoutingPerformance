@@ -40,12 +40,10 @@ public class Djikstra implements PathFinder {
         PriorityQueue<Vertex> candidates = new PriorityQueue<Vertex>();
 
         for (int i = 0; i < Network.NODES_MAX; i++) {
-            Vertex v;
             if (i != from && network.isAdjacent(from, i)) {
                 Edge e = network.getEdge(from, i);
-                v = new Vertex(i, factory.initialCost(e));
                 previous[i] = from;
-                candidates.add(v);
+                candidates.add(new Vertex(i, factory.initialCost(e)));
             }
         }
 

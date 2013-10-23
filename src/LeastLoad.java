@@ -1,3 +1,6 @@
+import java.util.Collections;
+import java.util.PriorityQueue;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -7,59 +10,56 @@
  */
 public class LeastLoad implements Cost {
 
-    private int maxCapacity;
-    private int currentLoad;
+    private PriorityQueue<Double> loads;
 
     public LeastLoad() {
-        this.maxCapacity = 0;
-        this.currentLoad = 0;
+        this.loads = new PriorityQueue<Double>(10, Collections.reverseOrder());
     }
 
     public LeastLoad(Edge e) {
-        this.maxCapacity = e.getCircuitCapacity();
-        this.currentLoad = e.getCurrentLoad();
-    }
-
-    public int getCurrentLoad() {
-        return currentLoad;
-    }
-
-    public int getMaxCapacity() {
-        return maxCapacity;
+        this.loads = new PriorityQueue<Double>(10, Collections.reverseOrder());
+        this.updateCost(e);
     }
 
     @Override
     public Cost clone() {
         LeastLoad clone = new LeastLoad();
-        clone.maxCapacity = this.getMaxCapacity();
-        clone.currentLoad = this.getCurrentLoad();
-
+        for (double d : loads) {
+            clone.loads.add(d);
+        }
         return clone;
     }
 
     @Override
     public double getCost() {
-        double cost = 1;
-        if (maxCapacity != 0) {
-            cost = (double) currentLoad / maxCapacity;
-        }
-        return cost;
+        return loads.peek();
     }
 
     @Override
     public void setStart() {
-        this.maxCapacity = 0;
-        this.currentLoad = 0;
+        this.loads.clear();
     }
 
     @Override
     public void updateCost(Edge e) {
-        this.currentLoad += e.getCurrentLoad();
-        this.maxCapacity += e.getCircuitCapacity();
+        double load = getRatio(e);
+        loads.add(load);
     }
 
     @Override
     public double calculateNewCost(Edge e) {
-        return (double) (currentLoad + e.getCurrentLoad()) / (double) (maxCapacity + e.getCircuitCapacity());
+        double newCost = getRatio(e);
+        double oldCost = loads.peek();
+        if (oldCost < newCost) {
+            newCost = oldCost;
+        }
+        return newCost;
     }
+
+    private double getRatio (Edge e) {
+        double currentLoad = e.getCurrentLoad();
+        double circuitCapacity = e.getCircuitCapacity();
+        return (currentLoad / circuitCapacity);
+    }
+
 }
