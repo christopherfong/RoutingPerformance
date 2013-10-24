@@ -6,7 +6,7 @@ import java.util.PriorityQueue;
  *
  * @author : Chris FONG
  * @since : 19/10/13
- *        Made with Love
+ * Made with Love
  */
 public class LeastLoad implements Cost {
 
@@ -31,7 +31,7 @@ public class LeastLoad implements Cost {
     }
 
     @Override
-    public double getCost() {
+    public double get() {
         return loads.peek();
     }
 
@@ -56,7 +56,7 @@ public class LeastLoad implements Cost {
         return newCost;
     }
 
-    private double getRatio (Edge e) {
+    private double getRatio(Edge e) {
         double currentLoad = e.getCurrentLoad();
         double circuitCapacity = e.getCircuitCapacity();
         return (currentLoad / circuitCapacity);

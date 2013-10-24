@@ -3,9 +3,9 @@
  *
  * @author : Chris FONG
  * @since : 19/10/13
- *        Made with Love
+ * Made with Love
  */
-public class Edge  {
+public class Edge {
 
     private static final int PROPAGATION_DELAY_MAX = 200;
     private static final int VIRTUAL_CIRCUITS_MAX = 100;

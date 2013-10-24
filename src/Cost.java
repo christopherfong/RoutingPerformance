@@ -3,13 +3,13 @@
  *
  * @author : Chris FONG
  * @since : 20/10/13
- *        Made with Love
+ * Made with Love
  */
 public interface Cost {
 
     public Cost clone();
 
-    public double getCost();
+    public double get();
 
     public void setStart();
 

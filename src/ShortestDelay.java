@@ -3,7 +3,7 @@
  *
  * @author : Chris FONG
  * @since : 19/10/13
- *        Made with Love
+ * Made with Love
  */
 public class ShortestDelay implements Cost {
 
@@ -29,7 +29,7 @@ public class ShortestDelay implements Cost {
     }
 
     @Override
-    public double getCost() {
+    public double get() {
         return this.accumulatedDelay;
     }
 

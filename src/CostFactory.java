@@ -3,7 +3,7 @@
  *
  * @author : Chris FONG
  * @since : 20/10/13
- *        Made with Love
+ * Made with Love
  */
 public class CostFactory {
 

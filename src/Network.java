@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -5,7 +6,7 @@ import java.util.List;
  *
  * @author : Chris FONG
  * @since : 19/10/13
- *        Made with Love
+ * Made with Love
  */
 public class Network {
 
@@ -52,6 +53,23 @@ public class Network {
             throw new IllegalArgumentException("Link " + from + "<->" + to + " already exists.");
         }
 
+    }
+
+    public int[] connectedLocations(int from) {
+        ArrayList<Integer> locations = new ArrayList<Integer>();
+        for (int i = 0; i < Network.NODES_MAX; i++) {
+            if (i != from && isAdjacent(from, i)) {
+                locations.add(i);
+            }
+        }
+
+        int[] locationsArray = new int[locations.size()];
+        int i = 0;
+        for (int location : locations) {
+            locationsArray[i] = location;
+            i++;
+        }
+        return locationsArray;
     }
 
     public boolean isAdjacent(int from, int to) {

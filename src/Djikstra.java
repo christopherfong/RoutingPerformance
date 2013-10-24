@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
  *
  * @author : Chris FONG
  * @since : 20/10/13
- *        Made with Love
+ * Made with Love
  */
 public class Djikstra implements PathFinder {
     private static final int EMPTY = -20;
@@ -39,37 +39,37 @@ public class Djikstra implements PathFinder {
 
         PriorityQueue<Vertex> candidates = new PriorityQueue<Vertex>();
 
-        for (int i = 0; i < Network.NODES_MAX; i++) {
-            if (i != from && network.isAdjacent(from, i)) {
-                Edge e = network.getEdge(from, i);
-                previous[i] = from;
-                candidates.add(new Vertex(i, factory.initialCost(e)));
-            }
+        int[] adjacentLocations = network.connectedLocations(from);
+        for (int neighbour : adjacentLocations) {
+            Edge e = network.getEdge(from, neighbour);
+            candidates.add(new Vertex(neighbour, factory.initialCost(e)));
+            previous[neighbour] = from;
         }
 
         while (!candidates.isEmpty()) {
 
             Vertex v = candidates.poll();
             int currentIndex = v.getIndex();
-            distances[currentIndex] = v.getCost().clone();
+            distances[currentIndex] = v.cloneCost();
 
             if (v.getIndex() == to) {
                 success = true;
                 break;
             }
 
-            for (int i = 0; i < Network.NODES_MAX; i++) {
-                if (distances[i] == null && network.isAdjacent(i, currentIndex)) {
-                    v = findVertex(candidates, i);
-                    Edge e = network.getEdge(i, currentIndex);
-                    if (v != null && v.getCost().getCost() > distances[currentIndex].calculateNewCost(e)) {
+            adjacentLocations = network.connectedLocations(currentIndex);
+            for (int neighbour : adjacentLocations) {
+                if (distances[neighbour] == null) {
+                    v = findVertex(candidates, neighbour);
+                    Edge e = network.getEdge(neighbour, currentIndex);
+                    if (v != null && v.getCost() > distances[currentIndex].calculateNewCost(e)) {
                         v.updateCost(distances[currentIndex], e);
-                        previous[i] = currentIndex;
+                        previous[neighbour] = currentIndex;
                     } else if (v == null) {
                         Cost clone = distances[currentIndex].clone();
                         clone.updateCost(e);
-                        candidates.add(new Vertex(i, clone));
-                        previous[i] = currentIndex;
+                        candidates.add(new Vertex(neighbour, clone));
+                        previous[neighbour] = currentIndex;
                     }
                 }
             }

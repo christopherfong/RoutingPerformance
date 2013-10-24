@@ -3,7 +3,7 @@
  *
  * @author : Chris FONG
  * @since : 19/10/13
- *        Made with Love
+ * Made with Love
  */
 public class Vertex implements Comparable {
 
@@ -23,8 +23,8 @@ public class Vertex implements Comparable {
         this.index = index;
     }
 
-    public Cost getCost() {
-        return cost;
+    public double getCost() {
+        return cost.get();
     }
 
     public void updateCost(Cost c, Edge e) {
@@ -32,13 +32,17 @@ public class Vertex implements Comparable {
         this.cost.updateCost(e);
     }
 
+    public Cost cloneCost () {
+        return cost.clone();
+    }
+
     @Override
     public int compareTo(Object o) throws NullPointerException {
         Vertex toCompare = (Vertex) o;
         int comparison = 0;
-        if (this.getCost().getCost() < toCompare.getCost().getCost()) {
+        if (this.cost.get() < toCompare.cost.get()) {
             comparison = -1;
-        } else if (this.getCost().getCost() > toCompare.getCost().getCost()) {
+        } else if (this.cost.get() > toCompare.cost.get()) {
             comparison = 1;
         }
         return comparison;
