@@ -103,15 +103,15 @@ public class Simulator {
     }
 
     public void printReport() {
-        System.out.printf("Total number of virtual circuit requests: %d\n", this.numRequests);
-        System.out.printf("Number of successfully routed requests: %d\n", this.successes);
-        System.out.printf("Percentage of successfully routed requests: %.2f\n", ((double) this.successes / this.numRequests) * 100);
+        System.out.printf("total number of virtual circuit requests: %d\n", this.numRequests);
+        System.out.printf("number of successfully routed requests: %d\n", this.successes);
+        System.out.printf("percentage of successfully routed requests: %.2f\n", ((double) this.successes / this.numRequests) * 100);
 
-        System.out.printf("Number of blocked requests: %d\n", this.failures);
-        System.out.printf("Percentage of blocked requests: %.2f\n", (double) this.failures / this.numRequests * 100);
+        System.out.printf("number of blocked requests: %d\n", this.failures);
+        System.out.printf("percentage of blocked requests: %.2f\n", (double) this.failures / this.numRequests * 100);
 
-        System.out.printf("Average number of hops per circuit: %.2f\n", (double) this.hops / this.successes);
-        System.out.printf("Average cumulative propagation delay per circuit %.2f\n", (double) this.delay / this.successes);
+        System.out.printf("average number of hops per circuit: %.2f\n", (double) this.hops / this.successes);
+        System.out.printf("average cumulative propagation delay per circuit %.2f\n", (double) this.delay / this.successes);
     }
 
 }
