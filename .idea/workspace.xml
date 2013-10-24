@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e5d81ac-e90f-49b6-a205-30b03780cccb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Djikstra.java" afterPath="$PROJECT_DIR$/src/Djikstra.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LeastLoad.java" afterPath="$PROJECT_DIR$/src/LeastLoad.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Network.java" afterPath="$PROJECT_DIR$/src/Network.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RoutingPerformance.java" afterPath="$PROJECT_DIR$/src/RoutingPerformance.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ShortestDelay.java" afterPath="$PROJECT_DIR$/src/ShortestDelay.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ShortestHop.java" afterPath="$PROJECT_DIR$/src/ShortestHop.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Simulator.java" afterPath="$PROJECT_DIR$/src/Simulator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Vertex.java" afterPath="$PROJECT_DIR$/src/Vertex.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="RoutingPerformance.iws" />
@@ -83,25 +76,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RoutingPerformance.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="RoutingPerformance.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RoutingPerformance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="44" selection-start="231" selection-end="231" vertical-scroll-proportion="0.0" vertical-offset="741" max-vertical-offset="2299">
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#2346#2357#0" expanded="false" />
-                <element signature="e#2408#2419#0" expanded="false" />
-                <element signature="e#2482#2491#0" expanded="false" />
-                <element signature="e#2553#2562#0" expanded="false" />
-              </folding>
+            <state line="12" column="45" selection-start="232" selection-end="232" vertical-scroll-proportion="0.26658162" vertical-offset="0" max-vertical-offset="2299">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Djikstra.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Djikstra.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Djikstra.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="103" column="39" selection-start="3207" selection-end="3207" vertical-scroll-proportion="0.32147563" vertical-offset="1675" max-vertical-offset="2983">
+            <state line="126" column="44" selection-start="3790" selection-end="3790" vertical-scroll-proportion="-94.24" vertical-offset="0" max-vertical-offset="2983">
               <folding />
             </state>
           </provider>
@@ -140,8 +127,8 @@
         <option value="$PROJECT_DIR$/src/Vertex.java" />
         <option value="$PROJECT_DIR$/src/Network.java" />
         <option value="$PROJECT_DIR$/src/Simulator.java" />
-        <option value="$PROJECT_DIR$/src/RoutingPerformance.java" />
         <option value="$PROJECT_DIR$/src/Djikstra.java" />
+        <option value="$PROJECT_DIR$/src/RoutingPerformance.java" />
       </list>
     </option>
   </component>
@@ -515,7 +502,7 @@
       <updated>1382161058332</updated>
       <workItem from="1382522680676" duration="199000" />
       <workItem from="1382522900610" duration="3032000" />
-      <workItem from="1382590711890" duration="16218000" />
+      <workItem from="1382590711890" duration="16375000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1382161255355</created>
@@ -569,15 +556,19 @@
       <created>1382593260762</created>
       <updated>1382593260762</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Refactored - now fills priorityQueue and slowly updates it">
+      <created>1382609576458</created>
+      <updated>1382609576458</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19449000" />
+    <option name="totallyTimeSpent" value="19606000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="960" y="0" width="960" height="1160" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901296" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -600,7 +591,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.7666999" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21716101" sideWeight="0.7666999" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23149905" sideWeight="0.5582627" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23149905" sideWeight="0.5582627" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -629,7 +620,8 @@
     <MESSAGE value="Fixed LeastLoad to calculate based on the highest load on the path&#10;" />
     <MESSAGE value="Edge no longer Comparable" />
     <MESSAGE value="added connectedLocations to network and used in Djikstras" />
-    <option name="LAST_COMMIT_MESSAGE" value="added connectedLocations to network and used in Djikstras" />
+    <MESSAGE value="Refactored - now fills priorityQueue and slowly updates it" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored - now fills priorityQueue and slowly updates it" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -715,19 +707,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RoutingPerformance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="44" selection-start="231" selection-end="231" vertical-scroll-proportion="0.0" vertical-offset="741" max-vertical-offset="2299">
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2346#2357#0" expanded="false" />
-            <element signature="e#2408#2419#0" expanded="false" />
-            <element signature="e#2482#2491#0" expanded="false" />
-            <element signature="e#2553#2562#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ShortestDelay.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="49" column="0" selection-start="1054" selection-end="1054" vertical-scroll-proportion="0.8007864" vertical-offset="282" max-vertical-offset="1045">
@@ -757,14 +736,21 @@
         <state line="86" column="0" selection-start="2406" selection-end="2406" vertical-scroll-proportion="0.6407263" vertical-offset="1140" max-vertical-offset="2983">
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="e#1748#1757#0" expanded="false" />
+            <element signature="e#1721#1730#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Djikstra.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="39" selection-start="3207" selection-end="3207" vertical-scroll-proportion="0.32147563" vertical-offset="1675" max-vertical-offset="2983">
+        <state line="126" column="44" selection-start="3790" selection-end="3790" vertical-scroll-proportion="-94.24" vertical-offset="0" max-vertical-offset="2983">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RoutingPerformance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="45" selection-start="232" selection-end="232" vertical-scroll-proportion="0.26658162" vertical-offset="0" max-vertical-offset="2299">
           <folding />
         </state>
       </provider>
