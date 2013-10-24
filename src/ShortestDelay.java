@@ -47,4 +47,5 @@ public class ShortestDelay implements Cost {
     public double calculateNewCost(Edge e) {
         return (this.accumulatedDelay + e.getPropagationDelay());
     }
+
 }

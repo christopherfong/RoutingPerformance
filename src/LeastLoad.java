@@ -32,7 +32,11 @@ public class LeastLoad implements Cost {
 
     @Override
     public double get() {
-        return loads.peek();
+        double cost = 2;
+        if (!loads.isEmpty()){
+            cost = loads.peek();
+        }
+        return cost;
     }
 
     @Override
@@ -49,7 +53,7 @@ public class LeastLoad implements Cost {
     @Override
     public double calculateNewCost(Edge e) {
         double newCost = getRatio(e);
-        double oldCost = loads.peek();
+        double oldCost = this.get();
         if (oldCost < newCost) {
             newCost = oldCost;
         }

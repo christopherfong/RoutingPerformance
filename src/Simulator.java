@@ -69,7 +69,7 @@ public class Simulator {
                 System.out.printf(" Request: %c<->%c starting\n", currentRequest.getFrom() + 'A', currentRequest.getTo() + 'A');
             }
             List<Integer> path = algorithm.find(currentRequest.getFrom(), currentRequest.getTo());
-            if (path != null && network.isValidPath(path)) {
+            if (network.isValidPath(path)) {
                 currentRequest.setPath(path);
                 for (int i = 0; i < path.size() - 1; i++) {
                     Edge e = this.network.getEdge(path.get(i), path.get(i + 1));
@@ -83,6 +83,13 @@ public class Simulator {
                 this.successes++;
                 this.running.add(currentRequest);
             } else {
+                if (RoutingPerformance.DEBUG) {
+                    System.out.printf("Failed: %c<->%c\n  ",currentRequest.getFrom()+'A', currentRequest.getTo()+'A');
+                    for (int index : path) {
+                        System.out.printf("%c->",index+'A');
+                    }
+                    System.out.println("[X]");
+                }
                 this.failures++;
             }
         }

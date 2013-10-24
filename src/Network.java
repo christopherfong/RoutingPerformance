@@ -78,8 +78,11 @@ public class Network {
 
     public boolean isValidPath(List<Integer> path) {
 
-        boolean isValidRoute = true;
+        if (path == null) {
+            return false;
+        }
 
+        boolean isValidRoute = true;
         for (int i = 0; i < path.size() - 1; i++) {
             Edge e = this.getEdge(path.get(i), path.get(i + 1));
             if (e == null || e.getCurrentLoad() >= e.getCircuitCapacity()) {

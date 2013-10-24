@@ -47,4 +47,5 @@ public class ShortestHop implements Cost {
     public double calculateNewCost(Edge e) {
         return (double) this.hops + 1;
     }
+
 }

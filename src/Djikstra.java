@@ -39,16 +39,41 @@ public class Djikstra implements PathFinder {
 
         PriorityQueue<Vertex> candidates = new PriorityQueue<Vertex>();
 
-        int[] adjacentLocations = network.connectedLocations(from);
-        for (int neighbour : adjacentLocations) {
-            Edge e = network.getEdge(from, neighbour);
-            candidates.add(new Vertex(neighbour, factory.initialCost(e)));
-            previous[neighbour] = from;
+        int[] adjacentLocations;// = network.connectedLocations(from);
+        for (int neighbour = 0; neighbour < Network.NODES_MAX; neighbour++) {
+            Cost c;
+            if (neighbour != from) {
+                if (network.isAdjacent(from, neighbour)) {
+                    Edge e = network.getEdge(from, neighbour);
+                    /*
+                    System.out.printf("Neighbour #%c\n",neighbour+'A');
+                    System.out.println(" currentLoad: "+e.getCurrentLoad());
+                    System.out.println(" circuitCapacity: "+e.getCircuitCapacity());
+                    */
+                    c = factory.initialCost(e);
+                    previous[neighbour] = from;
+                } else {
+                    c = factory.newCost();
+                }
+                candidates.add(new Vertex(neighbour, c));
+            }
+
         }
+
+        boolean broken = false;
 
         while (!candidates.isEmpty()) {
 
             Vertex v = candidates.poll();
+            if (v.getCost() == factory.newCost().get()) {
+                if (RoutingPerformance.DEBUG) {
+                    v.print();
+                    System.out.println("Break!\n");
+                }
+                broken = true;
+                break;
+            }
+
             int currentIndex = v.getIndex();
             distances[currentIndex] = v.cloneCost();
 
@@ -62,17 +87,17 @@ public class Djikstra implements PathFinder {
                 if (distances[neighbour] == null) {
                     v = findVertex(candidates, neighbour);
                     Edge e = network.getEdge(neighbour, currentIndex);
-                    if (v != null && v.getCost() > distances[currentIndex].calculateNewCost(e)) {
+                    if (v.getCost() > distances[currentIndex].calculateNewCost(e)) {
+                        candidates.remove(v);
                         v.updateCost(distances[currentIndex], e);
                         previous[neighbour] = currentIndex;
-                    } else if (v == null) {
-                        Cost clone = distances[currentIndex].clone();
-                        clone.updateCost(e);
-                        candidates.add(new Vertex(neighbour, clone));
-                        previous[neighbour] = currentIndex;
+                        candidates.add(v);
+
                     }
                 }
             }
+
+
 
         }
 

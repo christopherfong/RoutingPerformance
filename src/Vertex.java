@@ -36,6 +36,11 @@ public class Vertex implements Comparable {
         return cost.clone();
     }
 
+    public void print() {
+        System.out.println("Vertex " + index+'A');
+        System.out.println(" Cost "+cost.get());
+    }
+
     @Override
     public int compareTo(Object o) throws NullPointerException {
         Vertex toCompare = (Vertex) o;
